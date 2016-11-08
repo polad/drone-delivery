@@ -1,11 +1,11 @@
 {
-  "name": "Drone Delivery Service",
+  "name": "drone-delivery",
   "version": "1.0.0",
   "description": "Schedule drones to deliver to locations",
   "engines": {
     "node": ">=4.1.1"
   },
-  "main": "main.js",
+  "main": "src/app/main.js",
   "author": "Polad Mirzayev",
   "license": "ISC",
   "repository": {
