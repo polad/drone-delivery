@@ -30,7 +30,7 @@ function getScheduledTripsForDrone(drone, schedule) {
 
 function generate(drones, locations) {
   var schedule = [];
-  var locationsLeft = locations;
+  var locationsLeft = locations.slice();
   while(locationsLeft.length) {
     schedule = drones.map(drone => {
       var tripsForDrone = getScheduledTripsForDrone(drone, schedule);
