@@ -39,19 +39,18 @@ function pickLocationsForCapacity(capacity, locations) {
   return locations.reduce((locationsPicked, currentLocation, index) => {
     let currentLoad = calculateLoadForLocations(locationsPicked);
     let remainingCapacity = capacity - currentLoad;
-    let locationsToPick = [];
     if (currentLocation.weight < remainingCapacity && locations.length > 1) {
         let found = pickLocationsForCapacity(
           remainingCapacity - currentLocation.weight,
           locations.slice(index+1)
         );
         if (found.length) {
-          locationsToPick = [ currentLocation ].concat(found);
+          return locationsPicked.concat(currentLocation, found);
         }
     } else if (currentLocation.weight <= remainingCapacity) {
-      locationsToPick = [ currentLocation ];
+      return locationsPicked.concat(currentLocation);
     }
-    return locationsPicked.concat(locationsToPick);
+    return locationsPicked;
   }, []);
 }
 
