@@ -7,19 +7,18 @@ function generate(drones, locations) {
     schedule = drones.map(drone => {
       let tripsForDrone = getScheduledTripsForDrone(drone, schedule);
 
-      if (locationsLeft.length) {
-        let locationsPicked = pickLocationsForCapacity(
-          drone.maxWeight,
-          locationsLeft
-        );
+      let locationsPicked = pickLocationsForCapacity(
+        drone.maxWeight,
+        locationsLeft
+      );
 
-        if (locationsPicked.length) {
-          locationsLeft = locationsLeft.filter(
-            location => locationsPicked.every(picked => picked !== location)
-          );
-          tripsForDrone.push(locationsPicked);
-        }
+      if (locationsPicked.length) {
+        locationsLeft = locationsLeft.filter(
+          location => locationsPicked.every(picked => picked !== location)
+        );
+        tripsForDrone.push(locationsPicked);
       }
+
       return {
         drone: drone,
         trips: tripsForDrone
