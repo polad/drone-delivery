@@ -5,13 +5,13 @@ function loadFromFile(filename, cb) {
   fs.createReadStream(filename, {
     encoding: 'utf-8'
   }).on('data', data => {
-    var dataAsArray = data.split('\n');
+    let dataAsArray = data.split('\n');
 
     if (!dataAsArray.length) {
       cb(null, [], []);
     }
 
-    var drones = dataAsArray[0].split(',').
+    let drones = dataAsArray[0].split(',').
           reduce((prev, curr, index) => {
             return prev.concat(
               !(index%2) ? { name: curr } :
@@ -22,7 +22,7 @@ function loadFromFile(filename, cb) {
             );
           }, []);
 
-    var locations = dataAsArray.slice(1).
+    let locations = dataAsArray.slice(1).
           filter(item => item).
           map(item => {
             return item.split(',').

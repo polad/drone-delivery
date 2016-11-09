@@ -11,5 +11,14 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/polad/drone-delivery.git"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  },
+  "scripts": {
+    "start": "node ./src/app/main.js",
+    "test": "npm run test-node-unit",
+    "test-node-unit": "node_modules/.bin/mocha --require ./src/tests/globals.js --recursive ./src/tests/unit"
   }
 }
