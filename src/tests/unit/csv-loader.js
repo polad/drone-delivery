@@ -23,6 +23,7 @@ describe('csv-loader', () => {
 
       /* When */
       dataLoader.loadFromFile(filename, err => {
+        /* Then */
         expect(err).not.to.be.null;
         done();
       });
